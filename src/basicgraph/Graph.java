@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
 import util.GraphLoader;
 
 /** An abstract class that implements a directed graph. 
@@ -121,8 +118,17 @@ public abstract class Graph {
 	 * @return The degree sequence of this graph.
 	 */
 	public List<Integer> degreeSequence() {
-		// XXX: Implement in part 1 of week 1
-		return null;
+		List<Integer> degreeList = new ArrayList<Integer>();
+		int tempSum = 0;
+		
+		for (int i = 0; i < getNumVertices(); i++) {
+			tempSum = getInNeighbors(i).size() + getNeighbors(i).size();
+			degreeList.add(tempSum);
+		}
+		
+		Collections.sort(degreeList, Collections.reverseOrder());		
+		
+		return degreeList;
 	}
 	
 	/**
